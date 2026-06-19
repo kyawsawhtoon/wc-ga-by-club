@@ -17,10 +17,10 @@ const STORAGE_KEY = "wc2026-manual-assists-v1";
 
 // ─── helpers ─────────────────────────────────────────────────────────────────
 
-function ClubCrest({ src, name, size = 7 }: { src: string; name: string; size?: number }) {
+function ClubCrest({ src, name, size = 28 }: { src: string; name: string; size?: number }) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
-    <img src={src} alt={name} className={`h-${size} w-${size} object-contain flex-shrink-0`} />
+    <img src={src} alt={name} width={size} height={size} className="object-contain flex-shrink-0" style={{ width: size, height: size }} />
   );
 }
 
@@ -199,7 +199,7 @@ function LeaderboardView({ players }: { players: PlayerStats[] }) {
                 <td className="px-5 py-3.5 text-gray-500">{p.nationalTeam}</td>
                 <td className="px-5 py-3.5">
                   <div className="flex items-center gap-2">
-                    <ClubCrest src={p.team.crest} name={p.team.name} size={6} />
+                    <ClubCrest src={p.team.crest} name={p.team.name} size={24} />
                     <span className="hidden sm:inline text-gray-600 text-sm">{p.team.shortName}</span>
                   </div>
                 </td>
@@ -298,7 +298,7 @@ function ClubsView({
                   </td>
                   <td className="px-5 py-3.5">
                     <div className="flex items-center gap-3">
-                      <ClubCrest src={club.team.crest} name={club.team.name} size={5} />
+                      <ClubCrest src={club.team.crest} name={club.team.name} size={20} />
                       <span className="font-semibold text-gray-900">{club.team.name}</span>
                     </div>
                   </td>
