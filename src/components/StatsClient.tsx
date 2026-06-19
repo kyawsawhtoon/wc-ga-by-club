@@ -298,7 +298,7 @@ function ClubsView({
                   </td>
                   <td className="px-5 py-3.5">
                     <div className="flex items-center gap-3">
-                      <ClubCrest src={club.team.crest} name={club.team.name} />
+                      <ClubCrest src={club.team.crest} name={club.team.name} size={5} />
                       <span className="font-semibold text-gray-900">{club.team.name}</span>
                     </div>
                   </td>
