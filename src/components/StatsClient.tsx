@@ -156,7 +156,7 @@ function SortTh({
   return (
     <th
       onClick={onClick}
-      className={`px-5 py-3.5 text-xs font-semibold uppercase tracking-wide cursor-pointer select-none transition-colors ${
+      className={`px-3 py-2.5 text-xs font-semibold uppercase tracking-wide cursor-pointer select-none transition-colors ${
         align === "center" ? "text-center" : "text-left"
       } ${active ? color : "text-gray-400 hover:text-gray-600"}`}
     >
@@ -179,11 +179,11 @@ function LeaderboardView({ players }: { players: PlayerStats[] }) {
       <div className="overflow-x-auto rounded-2xl border border-gray-200/80 bg-white shadow-sm">
         <table className="w-full text-sm">
           <thead>
-            <tr className="border-b border-gray-100 bg-gray-50/80 text-left">
-              <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-wide text-gray-400">#</th>
-              <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-wide text-gray-400">Player</th>
-              <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-wide text-gray-400">Country</th>
-              <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-wide text-gray-400">Club</th>
+            <tr className="border-b border-gray-100 bg-gray-50 text-left">
+              <th className="w-10 sticky left-0 z-20 bg-gray-50 px-2 py-2.5 text-xs font-semibold uppercase tracking-wide text-gray-400">#</th>
+              <th className="sticky left-10 z-20 bg-gray-50 px-3 py-2.5 text-xs font-semibold uppercase tracking-wide text-gray-400">Player</th>
+              <th className="px-3 py-2.5 text-xs font-semibold uppercase tracking-wide text-gray-400">Country</th>
+              <th className="px-3 py-2.5 text-xs font-semibold uppercase tracking-wide text-gray-400">Club</th>
               <SortTh label="Goals"   active={sortKey === "goals"}             color="text-emerald-600" onClick={() => setSortKey("goals")} />
               <SortTh label="Assists" active={sortKey === "assists"}           color="text-blue-600"    onClick={() => setSortKey("assists")} />
               <SortTh label="G+A"     active={sortKey === "goalContributions"} color="text-violet-600"  onClick={() => setSortKey("goalContributions")} />
@@ -191,8 +191,8 @@ function LeaderboardView({ players }: { players: PlayerStats[] }) {
           </thead>
           <tbody>
             {sorted.map((p, i) => (
-              <tr key={p.player.id} className="border-b border-gray-50 transition-colors hover:bg-blue-50/30">
-                <td className="px-5 py-3.5">
+              <tr key={p.player.id} className="group border-b border-gray-50 transition-colors hover:bg-blue-50/30">
+                <td className="w-10 sticky left-0 z-10 bg-white group-hover:bg-blue-50/30 transition-colors px-2 py-2.5">
                   <span className={`inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold ${
                     i === 0 ? "bg-yellow-400 text-yellow-900" :
                     i === 1 ? "bg-gray-300 text-gray-700" :
@@ -202,21 +202,21 @@ function LeaderboardView({ players }: { players: PlayerStats[] }) {
                     {i + 1}
                   </span>
                 </td>
-                <td className="px-5 py-3.5 font-semibold text-gray-900">{p.player.name}</td>
-                <td className="px-5 py-3.5 text-gray-500">{p.nationalTeam}</td>
-                <td className="px-5 py-3.5">
+                <td className="sticky left-10 z-10 bg-white group-hover:bg-blue-50/30 transition-colors px-3 py-2.5 font-semibold text-gray-900">{p.player.name}</td>
+                <td className="px-3 py-2.5 text-gray-500">{p.nationalTeam}</td>
+                <td className="px-3 py-2.5">
                   <div className="flex items-center gap-2">
                     <ClubCrest src={p.team.crest} name={p.team.name} size={24} />
                     <span className="hidden sm:inline text-gray-600 text-sm">{p.team.shortName}</span>
                   </div>
                 </td>
-                <td className="px-5 py-3.5 text-center">
+                <td className="px-3 py-2.5 text-center">
                   <StatBadge value={p.goals}             color="bg-emerald-50 text-emerald-700" />
                 </td>
-                <td className="px-5 py-3.5 text-center">
+                <td className="px-3 py-2.5 text-center">
                   <StatBadge value={p.assists}           color="bg-blue-50 text-blue-700" />
                 </td>
-                <td className="px-5 py-3.5 text-center">
+                <td className="px-3 py-2.5 text-center">
                   <StatBadge value={p.goalContributions} color="bg-violet-50 text-violet-700" />
                 </td>
               </tr>
@@ -258,14 +258,14 @@ function ClubsView({
       <div className="overflow-x-auto rounded-2xl border border-gray-200/80 bg-white shadow-sm">
         <table className="w-full text-sm">
           <thead>
-            <tr className="border-b border-gray-100 bg-gray-50/80 text-left">
-              <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-wide text-gray-400">#</th>
-              <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-wide text-gray-400">Club</th>
+            <tr className="border-b border-gray-100 bg-gray-50 text-left">
+              <th className="w-10 sticky left-0 z-20 bg-gray-50 px-2 py-2.5 text-xs font-semibold uppercase tracking-wide text-gray-400">#</th>
+              <th className="sticky left-10 z-20 bg-gray-50 px-3 py-2.5 text-xs font-semibold uppercase tracking-wide text-gray-400">Club</th>
               <SortTh label="Goals"   active={sortKey === "totalGoals"}         color="text-emerald-600" onClick={() => setSortKey("totalGoals")} />
               <SortTh label="Assists" active={sortKey === "totalAssists"}       color="text-blue-600"    onClick={() => setSortKey("totalAssists")} />
               <SortTh label="G+A"     active={sortKey === "totalContributions"} color="text-violet-600"  onClick={() => setSortKey("totalContributions")} />
-              <th className="px-5 py-3.5 text-center text-xs font-semibold uppercase tracking-wide text-gray-400">Players</th>
-              <th className="px-5 py-3.5 w-8" />
+              <th className="px-3 py-2.5 text-center text-xs font-semibold uppercase tracking-wide text-gray-400">Players</th>
+              <th className="px-2 py-2.5 w-6" />
             </tr>
           </thead>
           <tbody>
@@ -274,9 +274,9 @@ function ClubsView({
                 <tr
                   key={club.team.id}
                   onClick={() => setExpandedId(expandedId === club.team.id ? null : club.team.id)}
-                  className="border-b border-gray-50 cursor-pointer transition-colors hover:bg-blue-50/30"
+                  className="group border-b border-gray-50 cursor-pointer transition-colors hover:bg-blue-50/30"
                 >
-                  <td className="px-5 py-3.5">
+                  <td className="w-10 sticky left-0 z-10 bg-white group-hover:bg-blue-50/30 transition-colors px-2 py-2.5">
                     <span className={`inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold ${
                       i === 0 ? "bg-yellow-400 text-yellow-900" :
                       i === 1 ? "bg-gray-300 text-gray-700" :
@@ -286,25 +286,25 @@ function ClubsView({
                       {i + 1}
                     </span>
                   </td>
-                  <td className="px-5 py-3.5">
-                    <div className="flex items-center gap-3">
+                  <td className="sticky left-10 z-10 bg-white group-hover:bg-blue-50/30 transition-colors px-3 py-2.5">
+                    <div className="flex items-center gap-2">
                       <ClubCrest src={club.team.crest} name={club.team.name} size={20} />
                       <span className="font-semibold text-gray-900">{club.team.name}</span>
                     </div>
                   </td>
-                  <td className="px-5 py-3.5 text-center">
+                  <td className="px-3 py-2.5 text-center">
                     <StatBadge value={club.totalGoals}         color="bg-emerald-50 text-emerald-700" />
                   </td>
-                  <td className="px-5 py-3.5 text-center">
+                  <td className="px-3 py-2.5 text-center">
                     <StatBadge value={club.totalAssists}       color="bg-blue-50 text-blue-700" />
                   </td>
-                  <td className="px-5 py-3.5 text-center">
+                  <td className="px-3 py-2.5 text-center">
                     <StatBadge value={club.totalContributions} color="bg-violet-50 text-violet-700" />
                   </td>
-                  <td className="px-5 py-3.5 text-center text-gray-400 text-sm">
+                  <td className="px-3 py-2.5 text-center text-gray-400 text-sm">
                     {club.players.length || "—"}
                   </td>
-                  <td className="px-5 py-3.5 text-gray-300 text-xs text-right">
+                  <td className="px-2 py-2.5 text-gray-300 text-xs text-right">
                     {club.players.length > 0 ? (expandedId === club.team.id ? "▲" : "▼") : ""}
                   </td>
                 </tr>
