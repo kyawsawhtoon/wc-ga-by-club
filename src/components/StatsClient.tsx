@@ -140,6 +140,32 @@ function AddPlayerModal({
 
 // ─── Leaderboard ──────────────────────────────────────────────────────────────
 
+function SortTh({
+  label,
+  active,
+  color,
+  onClick,
+  align = "center",
+}: {
+  label: string;
+  active: boolean;
+  color: string;
+  onClick: () => void;
+  align?: "left" | "center";
+}) {
+  return (
+    <th
+      onClick={onClick}
+      className={`px-5 py-3.5 text-xs font-semibold uppercase tracking-wide cursor-pointer select-none transition-colors ${
+        align === "center" ? "text-center" : "text-left"
+      } ${active ? color : "text-gray-400 hover:text-gray-600"}`}
+    >
+      {label}
+      <span className="ml-1 opacity-60">{active ? "▼" : "⇅"}</span>
+    </th>
+  );
+}
+
 function LeaderboardView({ players }: { players: PlayerStats[] }) {
   const [sortKey, setSortKey] = useState<SortKey>("goals");
 
@@ -148,27 +174,8 @@ function LeaderboardView({ players }: { players: PlayerStats[] }) {
     [players, sortKey]
   );
 
-  const SortBtn = ({ k, label, color }: { k: SortKey; label: string; color: string }) => (
-    <button
-      onClick={() => setSortKey(k)}
-      className={`rounded-lg px-4 py-2 text-sm font-semibold transition-all ${
-        sortKey === k ? `${color} text-white shadow-md` : "bg-white text-gray-500 border border-gray-200 hover:border-gray-300"
-      }`}
-    >
-      {label}
-    </button>
-  );
-
   return (
     <div>
-      <div className="mb-5 flex flex-wrap items-center gap-3">
-        <div className="flex gap-2">
-          <SortBtn k="goals"             label="Sort by Goals"   color="bg-emerald-500" />
-          <SortBtn k="assists"           label="Assists"         color="bg-blue-500" />
-          <SortBtn k="goalContributions" label="G+A"             color="bg-violet-500" />
-        </div>
-      </div>
-
       <div className="overflow-x-auto rounded-2xl border border-gray-200/80 bg-white shadow-sm">
         <table className="w-full text-sm">
           <thead>
@@ -177,9 +184,9 @@ function LeaderboardView({ players }: { players: PlayerStats[] }) {
               <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-wide text-gray-400">Player</th>
               <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-wide text-gray-400">Country</th>
               <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-wide text-gray-400">Club</th>
-              <th className="px-5 py-3.5 text-center text-xs font-semibold uppercase tracking-wide text-emerald-600">Goals</th>
-              <th className="px-5 py-3.5 text-center text-xs font-semibold uppercase tracking-wide text-blue-600">Assists</th>
-              <th className="px-5 py-3.5 text-center text-xs font-semibold uppercase tracking-wide text-violet-600">G+A</th>
+              <SortTh label="Goals"   active={sortKey === "goals"}             color="text-emerald-600" onClick={() => setSortKey("goals")} />
+              <SortTh label="Assists" active={sortKey === "assists"}           color="text-blue-600"    onClick={() => setSortKey("assists")} />
+              <SortTh label="G+A"     active={sortKey === "goalContributions"} color="text-violet-600"  onClick={() => setSortKey("goalContributions")} />
             </tr>
           </thead>
           <tbody>
@@ -246,34 +253,17 @@ function ClubsView({
     [clubs, sortKey]
   );
 
-  const SortBtn = ({ k, label, color }: { k: typeof sortKey; label: string; color: string }) => (
-    <button
-      onClick={() => setSortKey(k)}
-      className={`rounded-lg px-4 py-2 text-sm font-semibold transition-all ${
-        sortKey === k ? `${color} text-white shadow-md` : "bg-white text-gray-500 border border-gray-200 hover:border-gray-300"
-      }`}
-    >
-      {label}
-    </button>
-  );
-
   return (
     <div>
-      <div className="mb-5 flex gap-2">
-        <SortBtn k="totalGoals"         label="Sort by Goals"  color="bg-emerald-500" />
-        <SortBtn k="totalAssists"       label="Assists"        color="bg-blue-500" />
-        <SortBtn k="totalContributions" label="G+A"            color="bg-violet-500" />
-      </div>
-
       <div className="overflow-x-auto rounded-2xl border border-gray-200/80 bg-white shadow-sm">
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-gray-100 bg-gray-50/80 text-left">
               <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-wide text-gray-400">#</th>
               <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-wide text-gray-400">Club</th>
-              <th className="px-5 py-3.5 text-center text-xs font-semibold uppercase tracking-wide text-emerald-600">Goals</th>
-              <th className="px-5 py-3.5 text-center text-xs font-semibold uppercase tracking-wide text-blue-600">Assists</th>
-              <th className="px-5 py-3.5 text-center text-xs font-semibold uppercase tracking-wide text-violet-600">G+A</th>
+              <SortTh label="Goals"   active={sortKey === "totalGoals"}         color="text-emerald-600" onClick={() => setSortKey("totalGoals")} />
+              <SortTh label="Assists" active={sortKey === "totalAssists"}       color="text-blue-600"    onClick={() => setSortKey("totalAssists")} />
+              <SortTh label="G+A"     active={sortKey === "totalContributions"} color="text-violet-600"  onClick={() => setSortKey("totalContributions")} />
               <th className="px-5 py-3.5 text-center text-xs font-semibold uppercase tracking-wide text-gray-400">Players</th>
               <th className="px-5 py-3.5 w-8" />
             </tr>
