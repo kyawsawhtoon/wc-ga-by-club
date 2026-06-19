@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-turbopack --yes --skip-install)",
+      "Bash(npm install *)",
+      "Bash(npm audit *)",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(kill %1)",
+      "Bash(curl -s https://api.football-data.org/v4/competitions/WC/scorers?limit=100 -H 'X-Auth-Token: 4c062d60e85e4a64ad2be83470dc9e44')",
+      "Bash(python3 -c ' *)",
+      "Bash(curl -s https://api.football-data.org/v4/competitions/WC/teams -H 'X-Auth-Token: 4c062d60e85e4a64ad2be83470dc9e44')",
+      "Bash(curl -s https://api.football-data.org/v4/teams/758 -H 'X-Auth-Token: 4c062d60e85e4a64ad2be83470dc9e44')",
+      "Bash(curl -s https://api.football-data.org/v4/teams/57 -H 'X-Auth-Token: 4c062d60e85e4a64ad2be83470dc9e44')",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -s https://api.football-data.org/v4/competitions/PL/teams?season=2024 -H 'X-Auth-Token: 4c062d60e85e4a64ad2be83470dc9e44')",
+      "Bash(curl -s http://localhost:3001)",
+      "Bash(curl -s 'https://api.football-data.org/v4/competitions/WC/matches?status=FINISHED&limit=2' -H 'X-Auth-Token: 4c062d60e85e4a64ad2be83470dc9e44')",
+      "Bash(curl -s https://api.football-data.org/v4/matches/491482 -H 'X-Auth-Token: 4c062d60e85e4a64ad2be83470dc9e44')",
+      "Bash(curl -s https://api.football-data.org/v4/matches/537327 -H 'X-Auth-Token: 4c062d60e85e4a64ad2be83470dc9e44')",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/FIFA.WORLD/scoreboard\")",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/FIFA.WORLD/scoreboard?dates=20260611-20260619\")",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/FIFA.WORLD/summary?event=760437\")",
+      "Bash(curl -s https://api.football-data.org/v4/competitions/PL/teams?season=2025 -H 'X-Auth-Token: 4c062d60e85e4a64ad2be83470dc9e44')",
+      "Bash(gh auth *)",
+      "Bash(git -C \"/Users/kyawhtoon/Desktop/WC GA by Club\" rev-parse --git-dir)"
+    ]
+  }
+}
